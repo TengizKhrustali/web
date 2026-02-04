@@ -168,8 +168,58 @@
         animation: float 1.8s ease-in-out infinite;
       }
 
+      .sparkle.big {
+        width: 12px;
+        height: 12px;
+      }
+
+      .sparkle.cross {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        transform: rotate(45deg);
+      }
+
       .sparkle:nth-child(odd) {
         animation-delay: 0.4s;
+      }
+
+      .sparkle-burst {
+        position: absolute;
+        inset: -30px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .sparkle-burst span {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #ffffff;
+        border-radius: 50%;
+        box-shadow: 0 0 14px rgba(255, 255, 255, 0.9);
+        animation: burst 0.9s ease-out infinite;
+      }
+
+      .sparkle-burst span:nth-child(1) {
+        top: 0;
+        left: 20%;
+      }
+
+      .sparkle-burst span:nth-child(2) {
+        top: 10%;
+        right: 20%;
+      }
+
+      .sparkle-burst span:nth-child(3) {
+        bottom: 10%;
+        left: 15%;
+      }
+
+      .sparkle-burst span:nth-child(4) {
+        bottom: 0;
+        right: 15%;
       }
 
       .open .lid {
@@ -179,6 +229,10 @@
       .open .sparkles {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      .open .sparkle-burst {
+        opacity: 1;
       }
 
       .open + .message {
@@ -195,6 +249,21 @@
           transform: translateY(-10px);
         }
       }
+
+      @keyframes burst {
+        0% {
+          transform: scale(0.4);
+          opacity: 0.6;
+        }
+        60% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.4);
+          opacity: 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -204,17 +273,25 @@
         <div class="sparkles" aria-hidden="true">
           <span class="sparkle"></span>
           <span class="sparkle"></span>
+          <span class="sparkle big"></span>
           <span class="sparkle"></span>
+          <span class="sparkle cross"></span>
           <span class="sparkle"></span>
+          <span class="sparkle big"></span>
           <span class="sparkle"></span>
-          <span class="sparkle"></span>
+        </div>
+        <div class="sparkle-burst" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
         <div class="lid">
           <div class="bow"></div>
         </div>
         <div class="box"></div>
       </div>
-      <div class="message" id="message">I love you! ❤️</div>
+      <div class="message" id="message">ანი მიყვარხარ! ❤️</div>
       <div class="hint">Tap the gift box to open and close it.</div>
     </main>
 
